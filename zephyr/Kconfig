@@ -1,0 +1,104 @@
+
+config LELY_CANOPEN
+	bool "Enable lely co"
+	help
+	  This option enables lely canopen as a Zephyr module.
+
+if LELY_CANOPEN
+
+# config LELY_CANOPEN_SDO_BUFFER_SIZE
+# 	int "CANopen SDO buffer size"
+# 	default 32
+# 	range 7 889
+# 	help
+# 	  Size of the internal CANopen SDO buffer in bytes. Size must
+# 	  be at least equal to the size of the largest variable in the
+# 	  object dictionary. If data type is DOMAIN, data length is
+# 	  not limited to the SDO buffer size. If block transfer is
+# 	  implemented, value should be set to 889.
+
+# config LELY_CANOPEN_TRACE_BUFFER_SIZE
+# 	int "CANopen trace buffer size"
+# 	default 100
+# 	help
+# 	  Size of the CANopen trace buffer in bytes.
+
+# config LELY_CANOPEN_TX_WORKQUEUE_STACK_SIZE
+# 	int "Stack size for the CANopen transmit workqueue"
+# 	default 512
+# 	help
+# 	  Size of the stack used for the internal CANopen transmit
+# 	  workqueue.
+
+# config LELY_CANOPEN_TX_WORKQUEUE_PRIORITY
+# 	int "Priority for CANopen transmit workqueue"
+# 	default 0 if !COOP_ENABLED
+# 	default -1
+# 	help
+# 	  Priority level of the internal CANopen transmit workqueue.
+
+# config LELY_CANOPEN_STORAGE
+# 	bool "CANopen object dictionary storage"
+# 	depends on SETTINGS
+# 	default y
+# 	help
+# 	  Enable support for storing the CANopen object dictionary to
+# 	  non-volatile storage.
+
+# config LELY_CANOPEN_STORAGE_HANDLER_ERASES_EEPROM
+# 	bool "Erase CANopen object dictionary EEPROM entries in storage handler"
+# 	depends on LELY_CANOPEN_STORAGE
+# 	help
+# 	  Erase CANopen object dictionary EEPROM entries upon write to
+# 	  object dictionary index 0x1011 subindex 1.
+
+# config LELY_CANOPEN_LEDS
+# 	bool "CANopen LED indicators"
+# 	default y
+# 	help
+# 	  Enable support for CANopen LED indicators according to the CiA
+# 	  303-3 specification.
+
+# config LELY_CANOPEN_LEDS_BICOLOR
+# 	bool "CANopen bicolor LED indicator"
+# 	depends on LELY_CANOPEN_LEDS
+# 	help
+# 	  Handle CANopen LEDs as one bicolor LED, favoring the red LED
+# 	  over the green LED in accordance with the CiA 303-3
+# 	  specification.
+
+# config LELY_CANOPEN_SYNC_THREAD
+# 	bool "CANopen SYNC thread"
+# 	default y
+# 	help
+# 	  Enable internal thread for processing CANopen SYNC RPDOs and
+# 	  TPDOs. Application layer must take care of SYNC RPDO and
+# 	  TPDO processing on its own if this is disabled.
+
+# config LELY_CANOPEN_SYNC_THREAD_STACK_SIZE
+# 	int "Stack size for the CANopen SYNC thread"
+# 	depends on LELY_CANOPEN_SYNC_THREAD
+# 	default 512
+# 	help
+# 	  Size of the stack used for the internal thread which
+# 	  processes CANopen SYNC RPDOs and TPDOs.
+
+# config LELY_CANOPEN_SYNC_THREAD_PRIORITY
+# 	int "Priority for CANopen SYNC thread"
+# 	depends on LELY_CANOPEN_SYNC_THREAD
+# 	default 0 if !COOP_ENABLED
+# 	default -5
+# 	help
+# 	  Priority level of the internal thread which processes
+# 	  CANopen SYNC RPDOs and TPDOs.
+
+# config LELY_CANOPEN_PROGRAM_DOWNLOAD
+# 	bool "CANopen program download"
+# 	depends on BOOTLOADER_MCUBOOT
+# 	select IMG_MANAGER
+# 	default y
+# 	help
+# 	  Enable support for program download over CANopen according
+# 	  to the CiA 302-3 (draft) specification.
+
+endif # LELY_CANOPEN
