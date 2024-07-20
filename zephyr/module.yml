@@ -1,4 +1,0 @@
-name: lely-canopen
-build:
-  cmake: .
-  kconfig: Kconfig
